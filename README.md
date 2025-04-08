@@ -82,7 +82,7 @@ Add the following to your `claude_desktop_config.json`:
         "-i",
         "--rm",
         "-v",
-        "/c/Users/wonjun.lim.AD/OneDrive/문서/GitHub:/app/workspace",
+        "${your workspace}:/app/workspace",
         "nf-core-mcp"
       ]
     }
