@@ -32,7 +32,7 @@ docker build -t nf-core-mcp .
 
 # Run the container
 docker run -it --rm \
-  -v /c/Users/wonjun.lim.AD/OneDrive/문서/GitHub:/app/workspace \
+  -v ${your workspace}:/app/workspace \
   nf-core-mcp
 ```
 
