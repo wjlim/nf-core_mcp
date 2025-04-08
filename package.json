@@ -2,11 +2,14 @@
   "name": "nf-core-mcp",
   "version": "1.0.0",
   "description": "MCP server for managing nf-core pipeline repositories",
-  "private": true,
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
+    "start": "node dist/index.js",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "dev": "ts-node-esm src/index.ts",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
@@ -16,6 +19,13 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.24",
-    "typescript": "^5.3.3"
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  },
+  "bin": {
+    "nf-core-mcp": "./dist/index.js"
   }
-}
+} 

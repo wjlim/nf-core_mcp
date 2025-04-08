@@ -14,8 +14,8 @@ An MCP server for managing and navigating nf-core pipeline repositories.
 ### NPM Version
 
 ```bash
+
 cd nf-core_mcp
-# Install dependencies
 npm install
 
 # Build TypeScript
@@ -31,12 +31,45 @@ npm start
 # Build the Docker image
 cd nf-core_mcp
 docker build -t nf-core-mcp .
-
 # Run the container
-docker run -it --rm \
-  -v ${your/docker/build/path}:/app/workspace \
+docker run -i --rm \
+  -v "/path/to/your/workspace:/app/workspace" \
   nf-core-mcp
 ```
+
+## Adding nf-core Repositories
+
+To add new nf-core pipeline repositories to the workspace:
+
+1. **Clone the repositories**:
+   ```bash
+   # Navigate to your workspace directory (example for Windows)
+   cd /path/to/your/workspace
+
+   # Clone desired nf-core repositories
+   git clone https://github.com/nf-core/rnaseq.git
+   git clone https://github.com/nf-core/sarek.git
+   git clone https://github.com/nf-core/modules.git
+   # Add any other nf-core pipeline you want to manage
+   ```
+
+2. **Directory Structure**:
+   Your workspace should look like this:
+   ```
+   workspace/
+   ├── rnaseq/
+   ├── sarek/
+   ├── modules/
+   └── your-new-pipeline/
+   ```
+
+3. **Verify Installation**:
+   After starting the MCP server, use the `list-pipelines` command to verify that your new pipelines are detected:
+   ```
+   list-pipelines
+   ```
+
+Note: The MCP server will automatically detect and manage any nf-core pipeline repositories in your workspace directory.
 
 ## Available Tools
 
@@ -72,7 +105,24 @@ docker run -it --rm \
 
 ## Usage with Cursor IDE
 
-Add the following to your `claude_desktop_config.json`:
+### Using NPX (Recommended)
+
+Add the following to your `mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "nf-core": {
+      "command": "npx",
+      "args": ["-y", "nf-core-mcp"]
+    }
+  }
+}
+```
+
+### Using Docker
+
+Add the following to your `mcp.json`:
 
 ```json
 {
@@ -84,7 +134,7 @@ Add the following to your `claude_desktop_config.json`:
         "-i",
         "--rm",
         "-v",
-        "${your/docker/build/path}:/app/workspace",
+        "/path/to/your/workspace:/app/workspace",
         "nf-core-mcp"
       ]
     }
@@ -114,6 +164,29 @@ pipeline://rnaseq/config
 
 # Access workflow
 pipeline://rnaseq/workflow
+```
+
+## Running the Server
+
+### Using NPM
+
+```bash
+# If installed globally
+nf-core-mcp
+
+# If installed locally
+npx nf-core-mcp
+
+# Using npx without installation
+npx -y nf-core-mcp
+```
+
+### Using Docker
+
+```bash
+docker run -it --rm \
+  -v /path/to/your/workspace:/app/workspace \
+  nf-core-mcp
 ```
 
 ## Development

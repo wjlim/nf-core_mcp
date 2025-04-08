@@ -2,17 +2,15 @@ FROM node:20-slim
 
 WORKDIR /app
 
-# Install git and clean up
-RUN apt-get update && \
-    apt-get install -y git && \
-    rm -rf /var/lib/apt/lists/*
+# Install git
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-# Copy package files and TypeScript config
-COPY package*.json tsconfig.json ./
+# Copy package files
+COPY package*.json ./
+COPY tsconfig.json ./
 
-# Install TypeScript and dependencies
-RUN npm install -g typescript && \
-    npm install
+# Install dependencies
+RUN npm install
 
 # Copy source code
 COPY src/ ./src/
@@ -20,11 +18,18 @@ COPY src/ ./src/
 # Build TypeScript
 RUN npm run build
 
-# Set workspace directory
+# Clone nf-core repositories
 WORKDIR /app/workspace
+RUN git clone https://github.com/nf-core/rnaseq.git && \
+    git clone https://github.com/nf-core/modules.git && \
+    git clone https://github.com/nf-core/sarek.git && \
+    git clone https://github.com/nf-core/tools.git
+
+WORKDIR /app
 
 # Set environment variables
 ENV NODE_ENV=production
+ENV WORKSPACE_DIR=/app/workspace
 
 # Start the server
-CMD ["node", "/app/dist/index.js"] 
+CMD ["npm", "start"] 
