@@ -4,7 +4,7 @@ An MCP server for managing and navigating nf-core pipeline repositories.
 
 ## Features
 
-- List local nf-core repositories (rnaseq, sarek, modules)
+- List local nf-core repositories (rnaseq, sarek, modules, tools)
 - Access pipeline configurations and workflows
 - Search through pipeline files
 - Explore pipeline modules
