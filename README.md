@@ -14,6 +14,7 @@ An MCP server for managing and navigating nf-core pipeline repositories.
 ### NPM Version
 
 ```bash
+cd nf-core_mcp
 # Install dependencies
 npm install
 
@@ -28,6 +29,7 @@ npm start
 
 ```bash
 # Build the Docker image
+cd nf-core_mcp
 docker build -t nf-core-mcp .
 
 # Run the container
