@@ -34,11 +34,7 @@ docker build -t nf-core-mcp .
 
 # Run the container
 docker run -it --rm \
-<<<<<<< HEAD
   -v ${your/docker/build/path}:/app/workspace \
-=======
-  -v ${your workspace}:/app/workspace \
->>>>>>> 5b17330d992b517ee0a4f9e9326694ba35e32eae
   nf-core-mcp
 ```
 
