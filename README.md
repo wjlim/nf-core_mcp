@@ -14,6 +14,7 @@ An MCP server for managing and navigating nf-core pipeline repositories.
 ### NPM Version
 
 ```bash
+cd nf-core_mcp
 # Install dependencies
 npm install
 
@@ -28,11 +29,12 @@ npm start
 
 ```bash
 # Build the Docker image
+cd nf-core_mcp
 docker build -t nf-core-mcp .
 
 # Run the container
 docker run -it --rm \
-  -v /c/Users/wonjun.lim.AD/OneDrive/문서/GitHub:/app/workspace \
+  -v ${your/docker/build/path}:/app/workspace \
   nf-core-mcp
 ```
 
@@ -82,7 +84,7 @@ Add the following to your `claude_desktop_config.json`:
         "-i",
         "--rm",
         "-v",
-        "/c/Users/wonjun.lim.AD/OneDrive/문서/GitHub:/app/workspace",
+        "${your/docker/build/path}:/app/workspace",
         "nf-core-mcp"
       ]
     }

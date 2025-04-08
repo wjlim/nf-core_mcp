@@ -1,40 +1,21 @@
 {
-  "name": "@nf-core/mcp-server",
+  "name": "nf-core-mcp",
   "version": "1.0.0",
   "description": "MCP server for managing nf-core pipeline repositories",
-  "main": "dist/index.js",
+  "private": true,
   "type": "module",
-  "bin": {
-    "nf-core-mcp": "./dist/index.js"
-  },
   "scripts": {
-    "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "ts-node-esm src/index.ts",
-    "lint": "eslint src/**/*.ts",
-    "test": "jest",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint"
+    "start": "node dist/index.js"
   },
-  "keywords": [
-    "nf-core",
-    "nextflow",
-    "pipeline",
-    "mcp",
-    "model-context-protocol"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/nf-core-mcp"
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "express": "^4.18.2",
+    "zod": "^3.22.4"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "engines": {
-    "node": ">=18.0.0"
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
   }
 }
