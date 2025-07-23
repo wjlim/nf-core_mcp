@@ -2,6 +2,10 @@
 
 An MCP server for managing and navigating nf-core pipeline repositories.
 
+<a href="https://glama.ai/mcp/servers/@wjlim/nf-core_mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@wjlim/nf-core_mcp/badge" alt="nf-core Server MCP server" />
+</a>
+
 ## Features
 
 - List local nf-core repositories (rnaseq, sarek, modules, tools)
